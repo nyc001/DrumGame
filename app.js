@@ -3,10 +3,10 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+var cors = require("cors");
 const port = 3000;
 
 const app = express();
-
 mongoose.connect(
   "mongodb+srv://admin-henry:Ak2jaFk7LU7maHs@cluster0.hk3iv.mongodb.net/todolistDB?retryWrites=true&w=majority",
   {
@@ -51,6 +51,7 @@ const keeper4 = new Keeper({
 //   }
 // });
 
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.set("view engine", "ejs");
