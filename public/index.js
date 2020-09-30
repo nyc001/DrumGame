@@ -12,14 +12,11 @@ var sounds = [
 
 buttonArray.forEach((button, index) => {
   button.addEventListener("click", () => handleClick(index));
-  console.log(this);
 });
 
 document.addEventListener("keydown", logkey);
 
 function logkey(e) {
-  console.log(e.key);
-  console.log(e.code);
   switch (e.key) {
     case "w":
       handleClick(0);

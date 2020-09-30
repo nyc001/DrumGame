@@ -4,7 +4,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 var cors = require("cors");
-const port = 3000;
+const port = 3001;
 
 const app = express();
 mongoose.connect(
@@ -76,7 +76,6 @@ app.get("/keepers/:key", (req, res) => {
 
 app.post("/keepers/:key", (req, res) => {
   if (req.params.key === "234568") {
-    console.log(req.body);
     createKeeper({
       title: req.body.title,
       content: req.body.content,
@@ -86,14 +85,15 @@ app.post("/keepers/:key", (req, res) => {
     res.send("Wrong key");
   }
 });
-app.delete("/keepers/:key", (req, res) => {
+app.delete("/keepers/:key/:id", (req, res) => {
   if (req.params.key === "234568") {
-    const idToDelete = req.body.id;
+    const idToDelete = req.params.id;
+
     Keeper.findByIdAndDelete(idToDelete, (err) => {
       if (err) {
         res.send(`Can't delete:${err}`);
       } else {
-        res.send("New keeper deleted");
+        res.send("Keeper deleted");
       }
     });
   } else {
