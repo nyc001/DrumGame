@@ -81,7 +81,7 @@ app.post("/keepers/:key", (req, res) => {
       title: req.body.title,
       content: req.body.content,
     });
-    res.send("New keeper created");
+    res.send(req.body);
   } else {
     res.send("Wrong key");
   }
