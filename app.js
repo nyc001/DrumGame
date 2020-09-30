@@ -76,6 +76,7 @@ app.get("/keepers/:key", (req, res) => {
 
 app.post("/keepers/:key", (req, res) => {
   if (req.params.key === "234568") {
+    console.log(req.body);
     createKeeper({
       title: req.body.title,
       content: req.body.content,
